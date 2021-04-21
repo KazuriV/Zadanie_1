@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PD1_PZ_109602_202103.Models.MyTask>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista zadań</h1>
+
+<p>
+    <a asp-action="Create">Dodaj nowe zadanie</a> |
+    <a asp-action="Complete">Gotowe</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń zadanie</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
